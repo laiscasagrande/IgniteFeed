@@ -1,0 +1,4 @@
+.wrapper {
+  max-width: 70rem; /*ela vai ter uma largura máxima de 70rem*/
+  margin: 2rem auto; /*em cima e embaixo vai ter 2rem e auto nas leteriais, fazendo com que fique centralizado*/
+}

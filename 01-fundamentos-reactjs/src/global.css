@@ -1,0 +1,38 @@
+/*css escopado: css específico para aquele componente*/
+:root {
+  /*variáveis para as cores*/
+  --white: #ffffff;
+  --gray-100: #e1e1e6;
+  --gray-300: #c4c4cc;
+  --gray-400: #8d8d99;
+  --gray-600: #323238;
+  --gray-700: #29292e;
+  --gray-800: #202024;
+  --gray-900: #121214;
+
+  --green-500: #88875f;
+}
+
+* {
+  /*essas informações servem para o padding, o margin e o box do elemento nunca aumentem sua largura e altura e espremam para dentro*/
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--gray-900);
+  color: var(--gray-300);
+  -webkit-font-smoothing: antialiased
+    /*aplica nos navegadores que são baseados no webkit uma padronização para a fonte ficar mais fininha */
+}
+
+body,
+input,
+textarea, /*tive que colocar todos esses elementos porque por padrão eles não herdam a fonte do body*/
+button {
+  font-family: 'Roboto', sans-serif;/*caso o roboto não seja carregado, vou escolher a fonte padrão que não tenha serifa. No windows será um arial*/
+  font-weight: 400; /*espessura de 400*/
+  font-size: 1rem; /*unidades de medida relativa melhoram a acessibilidade da aplicação. Se alguma pessoa aumentar o tamanho da fonte, o nosso site vai aumentar de acordo com essas preferências. Se eu usar px e o usuário aumentar a fonte, esta continuará do mesmo tamanho */
+}/*1rem estou informando que é uma unidade relativa da fonte padrão do html que é 16px*/
+/*O rem sempre faz com que nossos elementos aumentem ou diminuam de forma totalitária, igual a todos os lementos caso o usuário deseje aumentar ou diminuir a fonte. Vai aumentar ou diminuir de forma proporcional ao que o usuário escolher, ao invés de continuar do mesmo tamanho */
