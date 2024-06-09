@@ -1,0 +1,71 @@
+.sidebar{
+background: var(--gray-800);
+border-radius: 8px;
+overflow: hidden; /*os elementos só vão ocupar o tamanho da sidebar, ou seja a imagme não vai ficar para fora da imagem; ela vai se adaptar dentro da sidebar*/
+}
+
+.cover{
+  width: 100%; /*ele vai ocupar 100% da largura da imagem, mas como eu coloquei o overflow hidden, ele vai ocupar toda a largura da imagem mas obedecendo o overflow*/
+  height: 72px; /*aqui vai cortar a imagem porque eu não coloquei para ela ter 100% da altura dela original*/
+  object-fit: cover /*isso serve para não distorcer a imagem. Para ela não ficar borrada*/
+}
+
+.profile{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: calc(0px - 1.5rem - 6px); /*para a imagem aparecer mais acima. 0 quer dizer que começa do 0 e vai até o -1.5, senão, a imagem da um espaçamento de 1.5 e não sobrepoe a imagem de cima. 1.5rem é metade de 3(os 3rem da imagem) -6px(metade de 12px)*/
+}
+
+.avatar{
+  /* box-sizing: initial; isso faz com que, quando você coloca border, outline em um elemento, crie um espaço a mais, para a imagem não ficar comprimida por causa da border, do outline */
+  width: calc(3rem + 12px); /*uma segunda forma é fazer cálculos no css. Vai ser 3rem + o tanto de berda que eu tenho. 4px de um lado mais 4 do outro+ 2 de um lado e 2 do outro*/
+  height: calc(3rem +  12px);
+  border-radius: 8px; /*utilizamos px para arredondamento porque não queremos que algo fique mais ou menor redondo quando o usuário mexe com o tamanho da tela*/
+  border: 4px solid var(--gray-600);
+  outline: 2px solid var(--green-500)
+}
+
+.profile strong{
+  margin-top: 1rem;
+  color: var(--gray-100);
+  line-height: 1.6; /*faz com que a altura da linha seja 1.6*/
+}
+
+.profile span{
+  font-size: 0.875rem;
+  color: var(--gray-400);
+  line-height: 1.65;
+}
+
+.sidebar footer {
+  border-top: 1px solid var(--gray-600);
+  margin-top: 1.5rem;
+  padding: 1.5rem 2rem 2rem
+}
+
+.sidebar footer a{
+  background: transparent;
+  color: var(--green-500);
+  border: 1px solid var(--green-500);
+  border-radius: 8px;
+  height: 58px;
+  padding: 0 1.5rem;
+  font-weight: bold;
+  display: block; /*vai ocupar toda a largura disponível no contâiner pai*/
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.5rem;
+
+  transition: color 0.1s, background-color 0.1s;
+}
+
+.sidebar footer a:hover{
+  background: var(--green-500);
+  color: var(--white)
+}

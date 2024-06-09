@@ -1,4 +1,12 @@
 .wrapper {
   max-width: 70rem; /*ela vai ter uma largura máxima de 70rem*/
   margin: 2rem auto; /*em cima e embaixo vai ter 2rem e auto nas leteriais, fazendo com que fique centralizado*/
+  padding: 0 1rem; /*Isso serve para, caso eu diminua a tela para um tamanho menor que 70rem, o conteúdo não fique colado nas laterais*/
+
+  display: grid; /*responsável por organizar o conteúdo em linhas e colunas*/
+  grid-template-columns: 256px 1fr; /*a primeira sidebar tem uma largura fixa de 256px, ela não vai diminuir ou aumentar caso o usuário aumente ou diminua a tela
+  Já o 1fr, ele vai se adaptar conforme o tamaho da tela. O fr do grid serve para dizer que algo vai ter tamanho flexível*/
+  gap: 2rem; /*espaçamento entre as colunas*/
+  align-items: flex-start; /*definimos para que os elmentos fiquem no topo. Sem isso, a sidebar vai ter o mesmo tamanho da segunda div e não o tamanho próprio para ela*/
+
 }
