@@ -1,18 +1,68 @@
 .post{
+background: var(--gray-800);
+border-radius: 8px;
+padding: 2.5rem
+}
 
+.post + .post{ /*o mais fala que eu quero estilizar todo o post caso tenha um outro post em cima dele*/
+margin-top: 2rem; /*só vai aplicar essa margem em posts que tenham um post em cima dele*/
 }
-.teste01{
-  display: flex;
-  flex-direction: column;
+
+.content {
+  line-height: 1.6;
+  color: var(--gray-300);
+  margin-top: 1.5rem
 }
-.teste02{
+
+.content p{
+  margin-top: 1rem;
+}
+
+.content a{
+  font-weight: bold;
+  color: var(--green-500);
+  text-decoration: none;
+}
+
+.content a:hover{
+  color: var(--grenn-300)
+}
+
+.post > header{ /*o sinal de maior indica ao css que ele deve estiliar o primeiro header que ele encontrar dentro do post*/
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.post > header time{
+  font-size: 0.875rem;
+  color: var(--gray-400)
+}
+
+.author{
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 2rem
+  gap: 1rem
 }
-.teste03{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+
+.author img{
+  width: calc(3rem + 12px); 
+  height: calc(3rem +  12px);
+  border-radius: 8px; 
+  border: 4px solid var(--gray-600);
+  outline: 2px solid var(--green-500)
+}
+
+.authorInfo strong{ /*o strong e o span, por padrão, são inlines. Eu posso pegar um por um e colocar block*/
+  display: block;
+  color: var(--gray-100);
+  line-height: 1.6;
+}
+
+.authorInfo span{
+
+  display: block;
+  font-size: 0.875rem;
+  color: var(--gray-400);
+  line-height: 1.6;
 }
