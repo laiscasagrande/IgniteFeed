@@ -14,6 +14,12 @@
   --green-500: #00875f;
 }
 
+:focus{
+  outline: transparent; /*tira a borda branca quando eu clico em algum elemento. Na textarea, por exemplo*/
+box-shadow: 0 0 0 2px var(--green-500); /*colocar uma borda verde quando clico na textare*/
+}
+
+
 * {
   /*essas informações servem para o padding, o margin e o box do elemento nunca aumentem sua largura e altura e espremam para dentro*/
   margin: 0;
