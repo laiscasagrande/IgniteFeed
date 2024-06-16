@@ -1,0 +1,88 @@
+.comment {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem
+}
+
+.comment>img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 8px;
+}
+
+.commentBox {
+    flex: 1
+        /*essa div vai ocupar toda a largura disponível. Como ela está dentro de uma div que contém display flex, ao colocar flex 1, estou querendo dizer que essa div ocupará todo o espaço disponível*/
+}
+
+.commentContext {
+    background: var(--gray-700);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.commentContext header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.authorAndTime strong {
+    display: block;
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+.authorAndTime time {
+    display: block;
+    font-size: 0.75rem;
+    line-height: 1.6;
+    color: var(--gray-400)
+}
+
+.commentContext header button{ /*botões com ícone: a altura do botão não é definida pelo conteúdo que está dentro dele. Então, uma forma de diminuir a altura do botão é estilizar o line-height dele*/
+background: transparent;
+border: 0;
+color: var(--gray-400);
+cursor: pointer;
+line-height: 0;
+border-radius: 2px;
+}
+
+.commentContext header button:hover{
+    color: var(--red-500)
+}
+
+.commentContext p{
+    margin-top: 1rem;
+    color: var(--gray-300);
+}
+
+.commentBox footer{
+margin-top: 1rem;
+}
+
+.commentBox footer button{
+    background: transparent;
+    border: 0; /*tirar a borda padrão do html*/
+    color: var(--gray-400);
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+
+    border-radius: 2px;
+}
+
+.commentBox footer button:hover{
+    color: var(--green-300);
+}
+
+.commentBox footer button svg{ /*estilizar o svg que está dentro do botão*/
+    margin-right: 0.5rem;
+}
+
+.commentBox footer button span::before{ /*o before funciona como se eue  tivesse criando um elemento dentro do span. Aí eu defino a estilização para esse novo elemento que estou criando*/
+    content: "\2022"; /*é o pontinho do html*/
+    padding: 0 0.25rem;
+}
