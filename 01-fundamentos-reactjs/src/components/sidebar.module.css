@@ -18,15 +18,6 @@ overflow: hidden; /*os elementos só vão ocupar o tamanho da sidebar, ou seja a
   margin-top: calc(0px - 1.5rem - 6px); /*para a imagem aparecer mais acima. 0 quer dizer que começa do 0 e vai até o -1.5, senão, a imagem da um espaçamento de 1.5 e não sobrepoe a imagem de cima. 1.5rem é metade de 3(os 3rem da imagem) -6px(metade de 12px)*/
 }
 
-.avatar{
-  /* box-sizing: initial; isso faz com que, quando você coloca border, outline em um elemento, crie um espaço a mais, para a imagem não ficar comprimida por causa da border, do outline */
-  width: calc(3rem + 12px); /*uma segunda forma é fazer cálculos no css. Vai ser 3rem + o tanto de berda que eu tenho. 4px de um lado mais 4 do outro+ 2 de um lado e 2 do outro*/
-  height: calc(3rem +  12px);
-  border-radius: 8px; /*utilizamos px para arredondamento porque não queremos que algo fique mais ou menor redondo quando o usuário mexe com o tamanho da tela*/
-  border: 4px solid var(--gray-600);
-  outline: 2px solid var(--green-500)
-}
-
 .profile strong{
   margin-top: 1rem;
   color: var(--gray-100);

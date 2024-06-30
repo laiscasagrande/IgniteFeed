@@ -1,0 +1,12 @@
+.avatar{ /*essa diferenciação é para componentes que vão ter borda e para os que não vão ter*/
+    width: 3rem; 
+    height: 3rem;
+    border-radius: 8px; 
+  }
+.avatarWithBorder{
+  width: calc(3rem + 12px); /*uma segunda forma é fazer cálculos no css. Vai ser 3rem + o tanto de berda que eu tenho. 4px de um lado mais 4 do outro+ 2 de um lado e 2 do outro*/
+  height: calc(3rem +  12px);
+  border-radius: 8px; /*utilizamos px para arredondamento porque não queremos que algo fique mais ou menor redondo quando o usuário mexe com o tamanho da tela*/
+  border: 4px solid var(--gray-600);
+  outline: 2px solid var(--green-500)
+}

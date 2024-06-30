@@ -1,12 +1,13 @@
 import styles from './Post.module.css'
-import { Comment } from './comment'
+import { Comment } from './Comment'
+import { Avatar } from './Avatar'
 
 export function Post() {
   return (
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <img src="https://github.com/laiscasagrande.png" alt="" />
+          <Avatar hasBorder src="https://github.com/diego3g.png"/>
           <div className={styles.authorInfo}>
             <strong>Laís Kaminski Casagrande</strong>
             <span>Web developer</span>
@@ -43,3 +44,5 @@ export function Post() {
     </article >
   )
 }
+
+//Ali no hasBorder do avatar, eu não preciso passar true: hasBorder={true}, eu posso deixar ele sozinho, pois o react já vai entender que o valor dela é true
