@@ -5,8 +5,19 @@
 
   display: grid; /*responsável por organizar o conteúdo em linhas e colunas*/
   grid-template-columns: 256px 1fr; /*a primeira sidebar tem uma largura fixa de 256px, ela não vai diminuir ou aumentar caso o usuário aumente ou diminua a tela
-  Já o 1fr, ele vai se adaptar conforme o tamaho da tela. O fr do grid serve para dizer que algo vai ter tamanho flexível*/
+  Já o 1fr, ele vai se adaptar conforme o tamaho da tela. O fr do grid serve para dizer que algo vai ter tamanho flexível. Esse 1fr é o tamanho que eu defini para a segunda coluna*/
   gap: 2rem; /*espaçamento entre as colunas*/
   align-items: flex-start; /*definimos para que os elmentos fiquem no topo. Sem isso, a sidebar vai ter o mesmo tamanho da segunda div e não o tamanho próprio para ela*/
-
 }
+
+@media (max-width: 768px){ /*quando a tela for menor que 768px (que é um tamanho legal para dispositivos mobile), */
+ html{
+  font-size: 87.5% /*No mobile, o tamanho fa fonte da nossa página passará a ser 87.5% da fonte normal. Isto é, o 100% corresponde a 16px, aqui eu defini para 14px. Coloquei em porcentagem porque px representa um valor bruto, parado.*/;
+ }/*A fonte normal no nosso dispositivo desktop é 100%. Quando o usuário diminuir a fonte de acordo com o dispositivo que está utilizando, a nossa página passará a ter 87.5% do tamanho original*/
+  .wrapper { /*o wrpper é a estilizção de cima*/
+  grid-template-columns: 1fr; /*agora, o meu grid não vai mais ter duas colunas, ele vai ter uma coluna que ocupa a largura toda*/
+  }
+}
+
+/*O rem da um poder muito legal quando a gente trabalha com responsividade. Como estamos utilizando rem em tudo na nossa página, tudo na nossa página se redimensiona automaticamente com base no font-size do nosso html, da nossa página*/
+/*O rem é uma unidade relativa ao tamanho da fonte da página. Se o usuário aumenta o a fonte do dispositivo, tudo aumenta, se ele diminui o tamanho da fonte, tudo diminui*/
