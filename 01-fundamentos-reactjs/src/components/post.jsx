@@ -1,34 +1,39 @@
 import styles from './Post.module.css'
 import { Comment } from './Comment'
 import { Avatar } from './Avatar'
+import { format, formatDistanceToNow } from "date-fns"
+import ptBR from 'date-fns/locale/pt-BR';
 
-export function Post(props) {
+export function Post({ author, publishedAt, content }) { //faço uma desestruturação para pegar apenas as propriedades que eu quero
+  const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
+    locale: ptBR,
+    addSuffix: true
+  });
+
+  const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
+    locale: ptBR
+  })//essa variável é relativa à data atual, ou seja, publicado há não sei quanto tempo a partir de agora. Vai receber o parâmetro publishedAt e vai comparar com o agora
+
   return (
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <Avatar hasBorder src="https://github.com/diego3g.png"/>
+          <Avatar hasBorder src={author.avatarUrl} />
           <div className={styles.authorInfo}>
-            <strong>{props.name}</strong>
-            <span>Web developer</span>
+            <strong>{author.name}</strong>
+            <span>{author.role}</span>
           </div>
         </div>
-        <time title="11 de maio às 08:13h" dateTime='2022-05-11 08:13:30'>{props.publishedAt}</time>
+        <time title={publishedDateFormatted} dateTime={publishedAt.toISOString()}>{publishedDateRelativeToNow}</time>
       </header>
       <div className={styles.content}>
-        {props.content}
-        {/* <p>Fala galeraa 👋</p>
-
-        <p>Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀</p>
-
-        <p><a href=""> jane.design/doctorcare</a></p>
-
-        <p>
-          <a href="">#novoprojeto</a>{' '}
-          <a href="">#nlw </a>{' '}
-          <a href="">#rocketseat</a>{' '}
-        </p> */}
-
+        {content.map((line) => { //eu vou percorrer o array content, vou passar por cada objeto que há dentro dele. Peguei a propriedade content que vem do componente pai e desestruturei para trabalhar com ele. AAsim, como ele á entende que é um array, eu percorro esse array e aplico funcionalidades
+          if (line.type === "paragraph"){
+            return <p>{line.content}</p> //como estou percorrendo o array content, estou acessando as propriedades type e content. Se a type foi igual a paragraph, vai exebir o conteúdo de todos os objetos que possuem type igual a paragraph
+          }else if (line.type === "link"){
+            return <p><a href="#">{line.content}</a></p>
+          }
+        })}
       </div>
       <form className={styles.commentForm}>
         <strong>Deixe seu feedback</strong>

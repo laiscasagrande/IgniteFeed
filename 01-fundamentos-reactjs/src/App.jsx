@@ -22,7 +22,7 @@ const posts = [ //array de posts
   {
     id: 2,
     author: {
-      avatarUrl: "http://github.com/maikbrito.png",
+      avatarUrl: "https://github.com/maykbrito.png",
       name: "Maik Brito",
       role: "Educator @Rocketseat"
     },
@@ -31,7 +31,7 @@ const posts = [ //array de posts
       { type: "paragraph", content: "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀" },
       { type: "link", content: "jane.design/doctorcare" }
     ],
-    publishedAt: new Date("2022-05-10 20:00:00")
+    publishedAt: new Date("2024-05-10 20:00:00")
   }
 ]
 //Iteração: repetir alguma coisa. Criar um estrutura de repetição. Iterar sobre um array -> percorrer o array e para cada posição do array vou fazer alguma coisa
@@ -46,9 +46,9 @@ export function App() {
           {posts.map(post => { /*diferente do forEach, o map retorna um valor. Assim, como ele retorna, ele exibe em tela*/ 
         return (  /*coloco o return porque preciso retornar alguma coisa*/
         <Post
-        name= {post.author.name}
+        author= {post.author} //author, content e publishedAt são os nomes das propriedades que eu estou passando para o componente post
+        content={post.content} //a propriedade content está pssando content, que é um array de parágrafos e link, que está dentro do array principal
         publishedAt={post.publishedAt}
-        content= {post.content}
         />
         )
           })}
