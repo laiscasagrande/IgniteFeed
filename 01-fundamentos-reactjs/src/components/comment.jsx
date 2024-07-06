@@ -2,7 +2,7 @@ import { Avatar } from './Avatar'
 import styles from './Comment.module.css'
 import { ThumbsUp, Trash } from 'phosphor-react'
 
-export function Comment() {
+export function Comment({content}) {
     return (
         <div className={styles.comment}>
             <Avatar hasBorder={false} className={styles.avatar} src="https://github.com/laiscasagrande.png" alt="" /> {/*o hasBorder serve para dizer que eu não quero a borda neste caso. Tenho que colocar o false entre as chaves porque se eu colocar entre aspas ele vai entender como texto*/}
@@ -17,7 +17,7 @@ export function Comment() {
                             <Trash size={2}/>
                         </button>
                     </header>
-                    <p>Muito bom Devon, parabéns!! 👏👏</p>
+                    <p>{content}</p>
                 </div>
                 <footer>
                     <button>

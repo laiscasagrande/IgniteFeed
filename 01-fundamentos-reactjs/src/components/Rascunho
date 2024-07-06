@@ -1,0 +1,17 @@
+Programação imperativa:
+- Nós dizemos para o nosso software o que deve ser feito
+- Dizemos o passo-a-passo de como deve ser feito
+- Por exemplo, em uma receita de bolo, dizemos passo-a-passo de como fazer aquele bolo
+- event.target.comment.value = '' -> Neste código, estamos informando que ele deve limpar o valor (value) que está na textarea (comment)
+- Ligar o forno a 180 graus.
+- Colocar a massa numa tigela.
+- Colocar a massa dentro do forno quente.
+
+Programação declarativa:
+- No react, não costumamos usar a programação imperativa, mas a declarativa
+- Ao invés de eu dizer o passo-a-passo de como se deve fazer, eu passo o resultado que eu espero.
+- Quais as condições para eu ter o resultado final.
+- Por exemplo, em uma receita de bolo, eu não digo o passo-a-passo para fazer aquele bolo. Eu digo as consdições necessárias para eu assar aquele bolo.
+- Para assar o bolo, eu preciso que o forno esteja a 180 graus. Quando o forno estiver quente, posso colocar a massa para assar.
+- Perceba que não estou dizendo como você vai fazer aquele bolo, mas sim, estou dizendo as condiçÕes para você fazer aquele bolo, sem as quais o bolo não assaria.
+- Eu falo quais são as condições para as coisas acontecerem, mas não falo o passo-a-passo.
