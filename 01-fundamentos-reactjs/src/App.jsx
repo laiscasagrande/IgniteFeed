@@ -37,15 +37,16 @@ const posts = [ //array de posts
 //Iteração: repetir alguma coisa. Criar um estrutura de repetição. Iterar sobre um array -> percorrer o array e para cada posição do array vou fazer alguma coisa
 
 export function App() {
-  return (
+  return ( //o return é o método de renderização
     <>
-      <Header />
+      <Header /> {/*componente filho do componente App, porque está dentro do App*/}
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
           {posts.map(post => { /*diferente do forEach, o map retorna um valor. Assim, como ele retorna, ele exibe em tela*/ 
         return (  /*coloco o return porque preciso retornar alguma coisa*/
-        <Post
+        <Post //Uma estrututa de repetição é uma lista. Assim, para o react, cada lista precisa ter uma chave única(key). Você passa essa key como propriedade. Você não precisa acessar essa propriedade, mas precisa passar uma key
+        key={post.id} //Essa key aceita qualquer coisa(número, string). Mas eu preciso passar qual é a informação única de cada item da minha lista. É uma fácil identificação para saber qual post é qual
         author= {post.author} //author, content e publishedAt são os nomes das propriedades que eu estou passando para o componente post
         content={post.content} //a propriedade content está pssando content, que é um array de parágrafos e link, que está dentro do array principal
         publishedAt={post.publishedAt}

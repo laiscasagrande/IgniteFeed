@@ -63,9 +63,9 @@ function handleNewCommentChange(){
       <div className={styles.content}>
         {content.map((line) => { //eu vou percorrer o array content, vou passar por cada objeto que há dentro dele. Peguei a propriedade content que vem do componente pai e desestruturei para trabalhar com ele. AAsim, como ele á entende que é um array, eu percorro esse array e aplico funcionalidades
           if (line.type === "paragraph"){
-            return <p>{line.content}</p> //como estou percorrendo o array content, estou acessando as propriedades type e content. Se a type foi igual a paragraph, vai exebir o conteúdo de todos os objetos que possuem type igual a paragraph
+             return <p key={line.content}>{line.content}</p> //como estou percorrendo o array content, estou acessando as propriedades type e content. Se a type foi igual a paragraph, vai exebir o conteúdo de todos os objetos que possuem type igual a paragraph. Como é uma lista, precisa de uma key. Eu posso identificar cada parágrafo pelo seu conteúdo. O react não se importa se identificarmos uma lista dentro de um componente desta forma. Ela precisa ser única dentro daquele componente. Se tiver outro componente com a mesma key o react não vai se importar, pois, para esse componente, essa key é única
           }else if (line.type === "link"){
-            return <p><a href="#">{line.content}</a></p>
+            return <p key={line.content}><a href="#">{line.content}</a></p> //Aqui a key precisa ir em ambos os parágrafos, pois um desses parágrafos pode aparecer 
           }
         })}
       </div>
@@ -84,7 +84,7 @@ function handleNewCommentChange(){
 {/*O onChange da textarea serve para monitorar a textarea para toda vez que ela sofrer alguma ação. Então cada vez que o usuário digitar clicar na textarea, eu vou fazer alguma operação*/}
       <div className={styles.commentList}>
         {comments.map((comment) => {
-          return <Comment content={comment}/> //estou passando por props o que está vindo do meu array
+          return <Comment key={comment} content={comment}/> //estou passando por props o que está vindo do meu array. Como esse array não tem uma key, posso passar o próprio comentário. O react não se importa se você passar desta forma, ele só quer alguma coisa que identifique aquele componente como único
         })}
       </div>
     </article >
