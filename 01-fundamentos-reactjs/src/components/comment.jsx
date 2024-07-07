@@ -4,6 +4,8 @@ import { ThumbsUp, Trash } from 'phosphor-react'
 
 export function Comment({content, OndeleteComment}) {
 
+
+
    function handleDeleteComment(){ //essa é uma forma do componente filho se comunicar com o componente pai, pois quando o usuário clicar em um botão que está neste componente, vai ser disparada e executada uma função que está no componente pai
     OndeleteComment(content) //passei a função de deletar comentário, que estou trazendo por props, para dentro desta. Estou passando a única informação que eu tenho do comentário para a função, que é seu conteúdo. Melhor seria se tivéssemo o id do comentário, mas não temos
    }

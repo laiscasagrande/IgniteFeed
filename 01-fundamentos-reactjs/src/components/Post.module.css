@@ -106,7 +106,7 @@ cursor: pointer;
 transition: background-color 0.1s; /*transition no hover*/
 }
 
-.commentForm button[type=submit]:hover{
+.commentForm button[type=submit]:not(:disabled):hover{ /*estou dizendo que quero que o hover funcione caso o botão não esteja desabilitado*/
 background: var(--grenn-300);
 }
 
@@ -118,6 +118,11 @@ background: var(--grenn-300);
 .commentForm:focus-within footer{/*se houver um focus em qualquer elemento dentro do commentForm, eu quero aplicar alguma estilização no footer*/
 visibility: visible; /*como a textarea é um elemento que possui um focus, quando eu clicar nela vai aplicar essa estilização no botão, pois está dentro do footer*/
 max-height: none;
+}
+
+.commentForm button:disabled{ /*quando meu botão for disabled, quero que ele tenha essa opacidade*/
+opacity: 0.7;
+cursor: not-allowed
 }
 
 .commentList{

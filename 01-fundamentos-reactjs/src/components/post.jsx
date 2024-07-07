@@ -30,6 +30,7 @@ const [comments, setComments] = useState([ //A função setComments não só alt
 ])
 
 const [newCommentText, setNewCommentText] = useState('') //Vou armazenar o que foi digitado na textarea. Eu sempre tenho que inicializar o estado de acordo com o tipo da variável que estou trabalhando. Nesse caso, como é um texto, inicializei com ''.
+//Esse estado armazena, em tempo real, tudo que é digitado na textarea
 
 function handleCreateNewComment(){
   event.preventDefault() //O comportamento padrão do html quando o usuário clica em um botão submit é direcionar o usuário para outra página. Esse evento impede isso, pois eu só tenho uma página na minha aplicação. Se eu não tiver esse evento, vai dar vários erros no console, pois o comportmanrto do html é direcionar o usuário a outra página, como só tenho uma página, vai dar vários erros. Por isso, preciso colocar esse evento
@@ -45,6 +46,7 @@ setNewCommentText('') //Perceba que não usei a programação imperativa, ou sej
 }
 
 function handleNewCommentChange(){
+  event.target.setCustomValidity('') //quando houver alguma coisa para guardar na variável newCommentText, ele torna o setCustomValidity como vazio, para, depois que der o erro e eu digitar alguma coisa, não der erro de novo
   setNewCommentText(event.target.value) //eu guardo, através do value, o que o usuário digitou na minha função, que é um estado, e mostro a variável newCommentText no setComment. Percebeu que o que está na textarea sempre vai depender do que acontece com a variável newCommentText? Sempre vai ser auma consição. Se essa variável for setada como string vazia, a textarea vai estar vazia com a consdição de esta variável ser setada como vazia
 }
 
@@ -62,6 +64,15 @@ return comment !== commentToDelete //eu estou criando uma lista no qual estou fi
 //eu não precisei chamar todos os comentário de novo (...comments) porque estou literalmente criando uma nova lista, e nao acrescentando mais uma informação
 //Para eu ter essa lógica, eu tenho que pensar o que ue quero que aconteça com a lista de comentários após a remoção de um. Eu quero que ela mostre todos os comentários menos aquele que eu excluí. Isso também explica o conceito de imutabilidade, pois, quando eu clicar na lixeira, a variável comments não vai sofrer uma alteração de excluir um item, por exemplo. Ao clicar na lixeira, o comentário não vai ser excluído, só vai ser filtrado os comentários sem aquele que eu "deletei"
 //Nesse caso, não vai ser feita nenhuma alteração na variável. Qaundo o usuário clicar na lixeira, a função setCommnets vai fazr um filtro sem o comentário que eu cliquei 
+
+function handleNewCommentInvalid(){
+//o setCustomValidity é o método que a gente usa para identificar, falar qual é mensagem  de validação que a gente quer para essa textarea
+event.target.setCustomValidity('Esse campo é obrigatório!')
+}
+//target é o elemnto, que pode ser uma textarea, um input.
+
+const isNewCommentEmpty = newCommentText.length === 0 //é mais legível colocar condicionais fora do html. Isso é clean code
+//como essa variável está guardando tudo que é digitado dentro da textarea, se não tiver nenhum caracter, o botão estará desabilitado. Parou de ser disables porque o estado foi alterado e, se o estado foi alterado, o componente é renderizado de novo e o react percebeu que agora a variável, com a alteração, tem um valor
 
   return (
     <article className={styles.post}>
@@ -87,13 +98,18 @@ return comment !== commentToDelete //eu estou criando uma lista no qual estou fi
 
       <form className={styles.commentForm} onSubmit={handleCreateNewComment}> {/*A função que estiver dentro do onSubmit vai ser disparada quando o usuário clicar no botão*/}
         <strong>Deixe seu feedback</strong>
-        <textarea placeholder='Deixe um comentário' 
+        <textarea 
+        placeholder='Deixe um comentário' 
         name="comment"
         onChange={handleNewCommentChange} 
         value={newCommentText} //como estou passando como valor para a textarea a variável responsável por guardar os comentários, cada vez que a variável mudar, a textarea vai refletir. Assim, quando eu submitar o formulário, a variável newCommentText vai ser setada como vazia
+        required
+        onInvalid={handleNewCommentInvalid} //essa propriedade é chamada sempre que o html identificar que a gente tentou realizar um onSubmit mas o campo, neste caso a textarea, é inválido, ou seja, não foi preenchido.
         /> {/*Eu tenho que pegar o que o usuário diigtar na textarea e mostrar no lugar de comments.length + 1. Pois vou estar passando tudo que já tem no array comments e acrescentar mais o que o usuário digitar*/}
         <footer>
-          <button type="submit">Publicar</button>
+          <button type="submit"
+          disabled={isNewCommentEmpty} 
+          >Publicar</button>
         </footer>
       </form>
 {/*O onChange da textarea serve para monitorar a textarea para toda vez que ela sofrer alguma ação. Então cada vez que o usuário digitar clicar na textarea, eu vou fazer alguma operação*/}
