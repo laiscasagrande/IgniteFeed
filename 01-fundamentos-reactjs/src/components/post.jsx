@@ -48,6 +48,21 @@ function handleNewCommentChange(){
   setNewCommentText(event.target.value) //eu guardo, através do value, o que o usuário digitou na minha função, que é um estado, e mostro a variável newCommentText no setComment. Percebeu que o que está na textarea sempre vai depender do que acontece com a variável newCommentText? Sempre vai ser auma consição. Se essa variável for setada como string vazia, a textarea vai estar vazia com a consdição de esta variável ser setada como vazia
 }
 
+//mesmo o botão de deletar comentário estando em outro componente, eu só posso acessar aqui o estado que controla os comentários que existem dentro do meu post. Depois, passo essa função por props
+function deleteComment(commentToDelete){ //esse é o argumento, a informação que estamos passando para a função, isto é, estamos passando o ingrediente para ela fazer a receita. O argumento é como se fosse uma laranja e a função é a receita do suco de laranja. Neste caso, o ingrediente é o comentário que queremos remover e a receita é exclusão desse comentário
+  //console.log(`Deletar comentário ${comment}`)//Estamos passando o comentário que queremos remover como argumento
+ const commentsWithoutDeleteOne = comments.filter(comment => { //Para eu fazer isso, eu tenho que criar uma nova lista de comentários sem o comentário que ue não quero mais
+return comment !== commentToDelete //eu estou criando uma lista no qual estou filtrando os comentários que são diferentes dos que eu quero excluir. Isso vai gerar uma nova lista sem o comentário que eu deletei
+ }) 
+ //o filter é um método que vai percorrer cada comentário e, se eu retornar true, ele vai manter na lista, e se eu retornar false, ele vai remover da lista aquele item 
+ setComments(commentsWithoutDeleteOne) //chamo a função responsável por guardar os comentários
+//imutabilidade -> as variáveis não sofrem mutação, ou seja, nunca alteramos o valor de uma variável na memória da nossa aplicação. Nós criamos um novo valor, isto é, um novo espaço na memória. Quano chamamos a função setComments, nós nõ estamos atualizando a variável comments, nós, na verdade, estamos criando um novo valor par a variável comments. Resumindo, a variável não altera seu valor, apenas cria um novo espaço na memória.
+}
+//Explicando melhor a lógica de comentários, eu não estou removendo de fato. Eu, primeiramente, estou passando um argumento commentToDelete, que representa cada comentário. Eu acesso esse argumento, essa informação la no componente filho(). Assim, cada vez que eu clicar em um comentárip, essa função vai criar uma lista sem o comentário que ue cliquei.
+//eu não precisei chamar todos os comentário de novo (...comments) porque estou literalmente criando uma nova lista, e nao acrescentando mais uma informação
+//Para eu ter essa lógica, eu tenho que pensar o que ue quero que aconteça com a lista de comentários após a remoção de um. Eu quero que ela mostre todos os comentários menos aquele que eu excluí. Isso também explica o conceito de imutabilidade, pois, quando eu clicar na lixeira, a variável comments não vai sofrer uma alteração de excluir um item, por exemplo. Ao clicar na lixeira, o comentário não vai ser excluído, só vai ser filtrado os comentários sem aquele que eu "deletei"
+//Nesse caso, não vai ser feita nenhuma alteração na variável. Qaundo o usuário clicar na lixeira, a função setCommnets vai fazr um filtro sem o comentário que eu cliquei 
+
   return (
     <article className={styles.post}>
       <header>
@@ -84,8 +99,9 @@ function handleNewCommentChange(){
 {/*O onChange da textarea serve para monitorar a textarea para toda vez que ela sofrer alguma ação. Então cada vez que o usuário digitar clicar na textarea, eu vou fazer alguma operação*/}
       <div className={styles.commentList}>
         {comments.map((comment) => {
-          return <Comment key={comment} content={comment}/> //estou passando por props o que está vindo do meu array. Como esse array não tem uma key, posso passar o próprio comentário. O react não se importa se você passar desta forma, ele só quer alguma coisa que identifique aquele componente como único
-        })}
+          return <Comment key={comment} content={comment} 
+          OndeleteComment={deleteComment}/> //estou passando por props o que está vindo do meu array. Como esse array não tem uma key, posso passar o próprio comentário. O react não se importa se você passar desta forma, ele só quer alguma coisa que identifique aquele componente como único
+        })} {/*Comecei o nome da propriedade com On para dizer que, quando o usuário clicar no botão deletar, seja disparada uma função*/}
       </div>
     </article >
   )
