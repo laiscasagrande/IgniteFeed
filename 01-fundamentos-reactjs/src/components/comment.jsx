@@ -14,7 +14,9 @@ export function Comment({ content, OndeleteComment }) {
     //Ao chamar a propriedade OndeleteComment(content) e passar content como parâmetro, ele vai entender que é o argumento que eu passei e vai executar o que está dentro da função com a informação content
     
     function handleLikeComment(){
-        setLikeCount(likeCount + 1) //Eu preciso saber quantos likes que ue játenho para adicionar mais 1. Para fazer isso, eu vou pegar a variável que armazena os likes e acrescentar mais 1
+        setLikeCount((state) => {
+            return state + 1 //crie um argumento e some + 1. Esse argumento é sempre o último valor da variável likeCount. Se eu passar como argumento ao invés de usar a própria variável likeCount, eu não corro o risco de que, sempre que o estado mudar, o react criar uma nova versão do componente e likeCount sempre dar 0. Pois, se faço assim, eu não estou atulizando o estado diretamente na variável, o que não causa o problema
+        }) //Eu preciso saber quantos likes que ue játenho para adicionar mais 1. Para fazer isso, eu vou pegar a variável que armazena os likes e acrescentar mais 1
     }
     
     return (

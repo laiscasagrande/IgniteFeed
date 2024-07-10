@@ -31,3 +31,23 @@ Key no React:
 - O react vai chegar no índice 2 e vai perceber que algo aconteceu, não é mais o mesmo post de antes. Logo, ele vai renderizar de novo. E isso vai criar uma lentidão desnecessária.
 - Por isso, eu preciso de um identificador que prove que aquela informação é única e seja sempre única, não importa o que eu faça.
 - Resumindo, se a lista de componentes precisar ser renderizada novamente, e esse componente possuir uma chave, o react vai entender que esse componente já existe na tela e vai enteder também que não precisar renderizar de novo, pois já existe. Agora, se não tiver uma key, e a lista de componentes precisar ser renderizada de novo, o react não vai saber qual já estava em tela e qual não estava. Assim, ele não só vai renderizar o novo comentário, como também vai renderizar todos os comentárrios. Causando uma lentidão no sistema.
+
+Closures no React:
+
+function Comment(props){
+    const [like, setLikes] = useState(0)
+    function handleLikeComment(){
+        setLikeCount(likeCount + 1) //Isso, para o react, é como se ele criasse um novo "parâmetro" para o componente Comment(props, 0), no qual esse novo "parâmetro" é o resultado, que com o tempo fica assim Comment(props, 1), Comment(props, 2).
+    }
+}
+ Quando Comment(props, 1), o react cria uma nova vesão do componente. 
+
+ Para cada vez que eu mudo o estado like, o react cria um novo contexto para aquele componente. Mas cada código que eu executo aqui setLikeCount(likeCount + 1), logo após eu alterar o estado, eu ainda to trabalhando com o contexto anterior, que, seguindo a lógica, será sempre Comment(props, 0). Assim, o estado like sempre será 0.
+
+ Resumindo, cada vez que eu dou um like (setLikeCount(likeCount + 1)), eu atualizo o estado like. E cada vez que eu atualizo, e sempre que um estado muda, o react faz uma nova renderização, fazendo com aquele valor sempre seja 0 
+
+ Para resolver isso, eu posso criar uma variável newLikeCount = likeCount + 1. Agora vai dar certo porque, diferente do estado, ela vai ter aquela variável atualizada, porque quem está atualizando não é o estado, é a variável
+
+ Ou, eu posso criar uma função, no qual retorno um novo valor. Mas para isso, eu tenho que passar como argumento o valor mais recente de likeCount que, como é um argumento, pode ser qualquer nome
+
+ SEMPRE QUE VOCÊ FOR ATUALIZAR UMA INFORMAÇÃO, E ESSA INFORMAÇÃO DEPENDE DO VALOR QUE ELA TINHA ANTERIORMENTE, OU SEJA, DEPENADE DELA MESMA, É SEMPRE LEGAL FAZER ESSA ATUALIZAÇÃO POR MEIO DESSE PADRÃO DE FUNÇÃO
