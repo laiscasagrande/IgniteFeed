@@ -78,3 +78,4 @@ Funcionalidades do typeScript:
 -Se você precisar mudar alguma coisa no seu código, o typeScript garante que você não vai quebrar outras partes do sistema. Se der algum conflito, ele te avisará.
 
 Resumindo, o typeScript é importante porque te ajuda a encontrar erros no código antes de você rodá-lo, oferece sugestões enquanto você digita, facilita a manutenção do código e garante que mudanças não quebrem outras partes do sistema.
+Antes que dê pane no sistema inteiro e você não se achar mais, o typeScript te alertará antes que isso aconteça.
