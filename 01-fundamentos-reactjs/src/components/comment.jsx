@@ -3,12 +3,12 @@ import { Avatar } from './Avatar'
 import styles from './Comment.module.css'
 import { ThumbsUp, Trash } from 'phosphor-react'
 
-export function Comment({ content, OndeleteComment }) {
+export function Comment({ content, OnDeleteComment }) {
 
     const [likeCount, setLikeCount] = useState(0)//como o like é algo que vai mudar de acordo com uma ação do usuário(quando ele clicar no botão), precisamos armazenar isso em um estado. Lembre-se, sempre que alguma variável, alguma coisa sofrer alguma ação por causa do usuário, ou seja, sempre que algo possa sofrer diversas mudanças, guarde em um estado
 
     function handleDeleteComment() { //essa é uma forma do componente filho se comunicar com o componente pai, pois quando o usuário clicar em um botão que está neste componente, vai ser disparada e executada uma função que está no componente pai
-        OndeleteComment(content) //passei a função de deletar comentário, que estou trazendo por props, para dentro desta. Estou passando a única informação que eu tenho do comentário para a função, que é seu conteúdo. Melhor seria se tivéssemo o id do comentário, mas não temos
+        OnDeleteComment(content) //passei a função de deletar comentário, que estou trazendo por props, para dentro desta. Estou passando a única informação que eu tenho do comentário para a função, que é seu conteúdo. Melhor seria se tivéssemo o id do comentário, mas não temos
     }
     //Como o estado que armazena os comnetários está no componente pai, eu criei uma função lá para deletar os comentários e passei essa função por props e acessei aqui. Como eu preciso de um id ou alguma coisa para identificar o comentário, eu passei o conteúdo do comentário, que é a única informação que eu tenho
     //Ao chamar a propriedade OndeleteComment(content) e passar content como parâmetro, ele vai entender que é o argumento que eu passei e vai executar o que está dentro da função com a informação content
@@ -29,7 +29,7 @@ export function Comment({ content, OndeleteComment }) {
                             <strong>Diego Fernandes</strong>
                             <time title="11 de maio às 08:13h" dateTime='2022-05-11 08:13:30'>Cerca de 2h atrás</time>
                         </div>
-                        <button title='Deletar comentário' onClick={handleLikeComment}> 
+                        <button title='Deletar comentário' onClick={handleDeleteComment}> 
                             <Trash size={24} />
                         </button>
                     </header>

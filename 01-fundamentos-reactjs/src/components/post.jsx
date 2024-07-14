@@ -116,7 +116,7 @@ const isNewCommentEmpty = newCommentText.length === 0 //é mais legível colocar
       <div className={styles.commentList}>
         {comments.map((comment) => {
           return <Comment key={comment} content={comment} 
-          OndeleteComment={deleteComment}/> //estou passando por props o que está vindo do meu array. Como esse array não tem uma key, posso passar o próprio comentário. O react não se importa se você passar desta forma, ele só quer alguma coisa que identifique aquele componente como único
+          OnDeleteComment={deleteComment}/> //estou passando por props o que está vindo do meu array. Como esse array não tem uma key, posso passar o próprio comentário. O react não se importa se você passar desta forma, ele só quer alguma coisa que identifique aquele componente como único
         })} {/*Comecei o nome da propriedade com On para dizer que, quando o usuário clicar no botão deletar, seja disparada uma função*/}
       </div>
     </article >
